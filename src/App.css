@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F7FA;
+  color: #172B4D;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 30px;
+  background-color: #F5F7FA;
+}
+
+.app-header {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #172B4D;
+}
+.app-header h1{
+font-size: 28px;
+color: #172B4D;
+}
+.app-header p{
+font-size: 15px;
+color: #647488;
+}
+
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+.delete-btn{
+  width: 120px;
+  height: 35px;
+  border-radius: 10px;
+  border-color: red;
+  background-color: red;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.expense-details{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  background-color: white;
+}
+.expense-form{
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+.expense-list h2, .expense-form h2{
+  color: #16479b;
+  font-size: 20px;
+  text-align: start;
+}
+
+.total-expense p{
+  text-align: start;
+}
+.inputs input{
+  width: 200px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  margin-top: 10px;
+  border-color: black;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #E2E8F0;
+}
+.input{
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.add-expenses-btn{
+  width: 120px;
+  height: 35px;
+  border-radius: 7px;
+  margin-top: 20px;
+  margin-right: 80px;
+  background-color: green;
+  border-color: green;
+}
+.total-expense{
+  width: 100%;
+  max-width: 350px;
+  min-height: 120px;
+  padding: 1.5rem;
+  height: fit-content;
+  border-radius: 12px;
+  background-color:white ;
+  margin-bottom: 50px;
+
+
+}
+.total-expense h1{
+  color: black;
+  text-align: start;
+ 
+}
+.total-label{
+  color: red;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0;
+}
+.total-earning{
+ width: 100%;
+  max-width: 350px;
+  min-height: 120px;
+  padding: 1.5rem;
+  height: fit-content;
+  border-radius: 12px;
+  background-color:white ;
+  margin-bottom: 50px;
+}
+.total-earning-label{
+  color: green;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0;
+  text-align: start;
+}
+.total-earning p{
+  color: black;
+  text-align: start;
+ 
+}
+.remaining-balance{
+ width: 100%;
+  max-width: 350px;
+  min-height: 120px;
+  padding: 1.5rem;
+  height: fit-content;
+  border-radius: 12px;
+  background-color:white ;
+  margin-bottom: 50px;
+}
+.remaining-balance-label{
+  color: red;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0;
+}
+.remaining-balance p{
+  color: black;
+  text-align: start;
+ 
+}
+.expenses-cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 0px;
+}
+.earning-input{
+  width: 250px;
+  height: 60px;
+  border-radius: 7px;
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  border-color: black;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #E2E8F0;
+  margin-right: 80px;
+
+}
+.add-earning-btn{
+  width: 80px;
+  height: 30px;
+  border: 1px solid #F5F7FA;
+  border-radius: 7px;
+  margin-bottom: 0px;
+  margin-left: 170px;
+}
+.add-earning{
+  display: grid;
+  gap: 0;
+  width: 100%;
+  max-width: 350px;
+  min-height: 120px;
+  padding: 1.5rem;
+
+  border-radius: 12px;
+  background-color:white ;
+  margin-bottom: 50px;
+
+}
+.total-earning-amount{
+  color: black;
+  margin-right: 200px;
+
+}
