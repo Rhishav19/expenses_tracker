@@ -95,7 +95,7 @@ return (
       </div>
        <div className="remaining-balance">
         <p className="remaining-balance-label">Remaining Balance</p>
-        <h1 className="ramaining-balance-amount">Rs.{[remainingBalance]}</h1>
+        <h1 className="remaining-balance-amount">Rs.{[remainingBalance]}</h1>
         <p className="remaining-balance-desc">Your total earning</p>
       </div>
       <div className="total-earning">

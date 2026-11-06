@@ -240,3 +240,27 @@ color: #647488;
 .mode-btn-container{
   display: flex;
 }
+.dark-app-container .total-expense ,.dark-app-container .total-earning,.dark-app-container .remaining-balance ,.dark-app-container .add-earning{
+  background-color: #1F2937;
+  border: 1px solid #374151;
+}.dark-app-container .total-expense h1,.dark-app-container .total-earning p,.dark-app-container .remaining-balance p,.dark-app-container .total-earning-amount, .dark-app-container.ramaining-balance-amount,.dark-app-container .total-desc{
+  color:#F9FAFB ;
+}
+.dark-app-container .remaining-balance-amount{
+  display: flex;
+}
+.dark-app-container .earning-input , .dark-app-container .expense-form{
+  background-color: #374151;
+  color: #F9FAFB;
+  border: 1px solid #F9FAFB;
+}
+.dark-app-container .inputs input{
+   background-color: #1F2937;
+  color: #F9FAFB;
+  border: 1px solid #F9FAFB;
+}
+.dark-app-container .expense-details{
+  background-color: #1F2937;
+  Border: 1px solid #374151;
+  color: #F9FAFB;
+}
