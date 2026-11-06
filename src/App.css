@@ -14,6 +14,11 @@ body {
   padding: 30px;
   background-color: #F5F7FA;
 }
+.dark-app-container{
+  min-height: 100vh;
+  padding: 30px;
+  background-color: #111827;
+}
 
 .app-header {
   margin-bottom: 30px;
@@ -207,4 +212,31 @@ color: #647488;
   color: black;
   margin-right: 200px;
 
+}
+.ramaining-balance-amount{
+  color: black;
+  padding-right: 200px;
+}
+.dark-mode-btn{
+  background-color: black;
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid black;
+  cursor: pointer;
+  }
+  .light-mode-btn{
+  background-color: white;
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid black;
+  cursor: pointer;
+  color: black;
+  margin-left: 10px;
+  
+}
+
+.mode-btn-container{
+  display: flex;
 }

@@ -3,10 +3,9 @@ import { useState } from "react";
 import "./App.css"
 
 function App(){
-  let [expense,setExpense]=useState([{
-     id: 1, title: "Lunch", amount: 250 },
-    { id: 2, title: "Bus fee", amount: 1000 
-  }]);
+  let [expense,setExpense]=useState([
+    
+  ]);
   let [newExpense,setNewExpense]=useState({
     id:"",
     title:"",
@@ -16,6 +15,8 @@ function App(){
   });
   let [earning,setEarning] = useState(30000);
   let [newEarning, setNewEarning] = useState("");
+  let [darkMode,setDarkMode] = useState(false);
+  
 
   const updateEarning=(event)=>{
     setNewEarning(event.target.value);
@@ -26,6 +27,8 @@ function App(){
   setEarning(prevEarning=>prevEarning+Number(newEarning));
   setNewEarning("");
 };
+  
+  
 
   const updateSetNewId=(event)=>{
     setNewExpense({...newExpense,id:event.target.value});
@@ -72,8 +75,13 @@ function App(){
   let expenses = expense.map((item)=>(
     <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} />
   ));
+  let remainingBalance = earning-totalExpenses;
+
+  const toggleDarkMode = ()=> {
+    setDarkMode(prevDarkMode=>!prevDarkMode);
+  }
 return (
-  <div className="app-container">
+  <div className={darkMode?"dark-app-container":"app-container"}>
 
       <header className="app-header">
         <h1>Expense Tracker</h1>
@@ -87,7 +95,7 @@ return (
       </div>
        <div className="remaining-balance">
         <p className="remaining-balance-label">Remaining Balance</p>
-        <h1 className="ramaining-balance-amount">Rs.{[totalExpenses]}</h1>
+        <h1 className="ramaining-balance-amount">Rs.{[remainingBalance]}</h1>
         <p className="remaining-balance-desc">Your total earning</p>
       </div>
       <div className="total-earning">
@@ -121,12 +129,17 @@ return (
           <button onClick={addExpense} className="add-expenses-btn">
             Add Expense
           </button>
+
         </div>
 
       </section>
 
     </main>
-  </div>
+<div className="mode-btn-container">
+    <button className="dark-mode-btn" onClick={toggleDarkMode}>{darkMode?"Light":"Dark"}</button>
+   
+</div>
+</div>
 );
 }
 
