@@ -1,11 +1,20 @@
 import ExpensesItem from "./ExpensesItem";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./App.css"
 
 function App(){
-  let [expense,setExpense]=useState([
-    
-  ]);
+  let [expense,setExpense]=useState(()=>{
+    let myexpense=localStorage.getItem("myexpenses");
+    if(myexpense){
+      return JSON.parse(myexpense)
+    }
+    else{
+      return [];
+    }
+  });
+  useEffect(()=>{
+    localStorage.setItem("myexpenses",JSON.stringify(expense))},[expense]);
+
   let [newExpense,setNewExpense]=useState({
     id:"",
     title:"",
@@ -13,7 +22,17 @@ function App(){
     category:"",
     date:""
   });
-  let [earning,setEarning] = useState(30000);
+  let [earning,setEarning] = useState(()=>{
+    let myearnings=localStorage.getItem("myearning");
+    if(myearnings){
+      return Number(myearnings);
+    }
+    else{
+      return 0;
+    }
+  });
+  useEffect(()=>{
+    localStorage.setItem(("myearning"),earning)});
   let [newEarning, setNewEarning] = useState("");
   let [darkMode,setDarkMode] = useState(false);
   
@@ -80,6 +99,10 @@ function App(){
   const toggleDarkMode = ()=> {
     setDarkMode(prevDarkMode=>!prevDarkMode);
   }
+
+  
+  
+  
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
 
