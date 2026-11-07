@@ -1,3 +1,8 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
 * {
   box-sizing: border-box;
 }
@@ -9,30 +14,60 @@ body {
   color: #172B4D;
 }
 
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ==============================
+   MAIN CONTAINERS
+============================== */
+
 .app-container {
   min-height: 100vh;
   padding: 30px;
   background-color: #F5F7FA;
 }
-.dark-app-container{
+
+.dark-app-container {
   min-height: 100vh;
   padding: 30px;
   background-color: #111827;
+  color: #F9FAFB;
 }
+
+/* ==============================
+   HEADER
+============================== */
 
 .app-header {
   margin-bottom: 30px;
   font-size: 28px;
   color: #172B4D;
 }
-.app-header h1{
-font-size: 28px;
-color: #172B4D;
+
+.app-header h1 {
+  font-size: 28px;
+  color: #172B4D;
 }
-.app-header p{
-font-size: 15px;
-color: #647488;
+
+.app-header p {
+  font-size: 15px;
+  color: #647488;
 }
+
+.dark-app-container .app-header,
+.dark-app-container .app-header h1 {
+  color: #F9FAFB;
+}
+
+.dark-app-container .app-header p {
+  color: #9CA3AF;
+}
+
+/* ==============================
+   MAIN CONTENT
+============================== */
 
 .main-content {
   max-width: 1100px;
@@ -41,226 +76,436 @@ color: #647488;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
 }
-.delete-btn{
-  width: 120px;
-  height: 35px;
-  border-radius: 10px;
-  border-color: red;
-  background-color: red;
-  font-size: 15px;
-  margin-top: 5px;
-}
-.expense-details{
+
+/* ==============================
+   EXPENSE CARDS
+============================== */
+
+.expense-details {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 20px;
   margin-bottom: 15px;
   border: 1px solid #E2E8F0;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.expense-form{
+
+.expense-details:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.expense-info {
+  min-width: 0;
+}
+
+.expense-info h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #172B4D;
+  text-transform: capitalize;
+}
+
+.expense-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: #647488;
+  font-size: 14px;
+}
+
+.expense-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.expense-amount {
+  margin: 0;
+  color: #DC2626;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ==============================
+   DELETE BUTTON
+============================== */
+
+.delete-btn {
+  width: auto;
+  height: auto;
+  padding: 8px 14px;
+  border: 1px solid #DC2626;
+  border-radius: 7px;
+  background-color: #DC2626;
+  color: white;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #B91C1C;
+}
+.edit-btn{
+  width: auto;
+  height: auto;
+  padding: 8px 14px;
+  border-radius: 7px;
+  background-color: #9CA3AF;
+  color: white;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+  outline: none;
+  border: 1px solid #9CA3AF;
+}
+
+
+/* ==============================
+   EXPENSE FORM
+============================== */
+
+.expense-form {
   background-color: white;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #E2E8F0;
 }
-.expense-list h2, .expense-form h2{
-  color: #16479b;
+
+.expense-list h2,
+.expense-form h2 {
+  color: #16479B;
   font-size: 20px;
   text-align: start;
 }
 
-.total-expense p{
-  text-align: start;
-}
-.inputs input{
+.inputs input {
   width: 200px;
-  height: 30px;
+  height: 40px;
   border-radius: 7px;
   background-color: white;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   margin-top: 10px;
-  border-color: black;
   padding: 10px;
   outline: none;
   border: 1px solid #E2E8F0;
 }
-.input{
-  display:flex;
+
+.inputs input:focus {
+  border-color: #2563EB;
+}
+
+.input {
+  display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.add-expenses-btn{
+
+.add-expenses-btn {
   width: 120px;
   height: 35px;
   border-radius: 7px;
   margin-top: 20px;
   margin-right: 80px;
   background-color: green;
-  border-color: green;
+  border: 1px solid green;
+  color: white;
 }
-.total-expense{
+
+.add-expenses-btn:hover {
+  background-color: #15803D;
+}
+
+/* ==============================
+   SUMMARY CARDS
+============================== */
+
+.total-expense,
+.total-earning,
+.remaining-balance,
+.add-earning {
   width: 100%;
   max-width: 350px;
   min-height: 120px;
   padding: 1.5rem;
   height: fit-content;
   border-radius: 12px;
-  background-color:white ;
+  background-color: white;
   margin-bottom: 50px;
-
-
 }
-.total-expense h1{
+
+.total-expense p {
+  text-align: start;
+}
+
+.total-expense h1 {
   color: black;
   text-align: start;
- 
 }
-.total-label{
+
+.total-label {
   color: red;
   font-size: 25px;
   font-weight: 500;
   margin: 0;
 }
-.total-earning{
- width: 100%;
-  max-width: 350px;
-  min-height: 120px;
-  padding: 1.5rem;
-  height: fit-content;
-  border-radius: 12px;
-  background-color:white ;
-  margin-bottom: 50px;
-}
-.total-earning-label{
+
+.total-earning-label {
   color: green;
   font-size: 25px;
   font-weight: 500;
   margin: 0;
   text-align: start;
 }
-.total-earning p{
+
+.total-earning p,
+.remaining-balance p {
   color: black;
   text-align: start;
- 
 }
-.remaining-balance{
- width: 100%;
-  max-width: 350px;
-  min-height: 120px;
-  padding: 1.5rem;
-  height: fit-content;
-  border-radius: 12px;
-  background-color:white ;
-  margin-bottom: 50px;
-}
-.remaining-balance-label{
-  color: red;
+
+.remaining-balance-label {
+  color: #16479B;
   font-size: 25px;
   font-weight: 500;
   margin: 0;
 }
-.remaining-balance p{
-  color: black;
-  text-align: start;
- 
-}
-.expenses-cards{
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  gap: 0px;
-}
-.earning-input{
-  width: 250px;
-  height: 60px;
-  border-radius: 7px;
-  background-color: white;
-  font-size: 20px;
-  color: black;
-  border-color: black;
-  padding: 10px;
-  outline: none;
-  border: 1px solid #E2E8F0;
-  margin-right: 80px;
 
-}
-.add-earning-btn{
-  width: 80px;
-  height: 30px;
-  border: 1px solid #F5F7FA;
-  border-radius: 7px;
-  margin-bottom: 0px;
-  margin-left: 170px;
-}
-.add-earning{
-  display: grid;
-  gap: 0;
-  width: 100%;
-  max-width: 350px;
-  min-height: 120px;
-  padding: 1.5rem;
-
-  border-radius: 12px;
-  background-color:white ;
-  margin-bottom: 50px;
-
-}
-.total-earning-amount{
+.total-earning-amount {
   color: black;
   margin-right: 200px;
-
 }
-.ramaining-balance-amount{
+
+.ramaining-balance-amount {
   color: black;
   padding-right: 200px;
 }
-.dark-mode-btn{
-  background-color: black;
-  width: 80px;
-  height: 30px;
-  border-radius: 7px;
-  border: 1px solid black;
-  cursor: pointer;
-  }
-  .light-mode-btn{
-  background-color: white;
-  width: 80px;
-  height: 30px;
-  border-radius: 7px;
-  border: 1px solid black;
-  cursor: pointer;
-  color: black;
-  margin-left: 10px;
-  
+
+/* ==============================
+   SUMMARY GRID
+============================== */
+
+.expenses-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-.mode-btn-container{
-  display: flex;
+/* ==============================
+   ADD EARNING
+============================== */
+
+.earning-input {
+  width: 100%;
+  max-width: 250px;
+  height: 60px;
+  border-radius: 7px;
+  background-color: white;
+  font-size: 18px;
+  color: black;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #E2E8F0;
 }
-.dark-app-container .total-expense ,.dark-app-container .total-earning,.dark-app-container .remaining-balance ,.dark-app-container .add-earning{
+
+.add-earning-btn {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #E2E8F0;
+  border-radius: 7px;
+  margin-top: 15px;
+}
+
+.add-earning-btn:hover {
+  background-color: #E2E8F0;
+}
+
+/* ==============================
+   DARK MODE BUTTONS
+============================== */
+
+.mode-btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.dark-mode-btn,
+.light-mode-btn {
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.dark-mode-btn {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.light-mode-btn {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+/* ==============================
+   DARK MODE - SUMMARY CARDS
+============================== */
+
+.dark-app-container .total-expense,
+.dark-app-container .total-earning,
+.dark-app-container .remaining-balance,
+.dark-app-container .add-earning {
   background-color: #1F2937;
   border: 1px solid #374151;
-}.dark-app-container .total-expense h1,.dark-app-container .total-earning p,.dark-app-container .remaining-balance p,.dark-app-container .total-earning-amount, .dark-app-container.ramaining-balance-amount,.dark-app-container .total-desc{
-  color:#F9FAFB ;
 }
-.dark-app-container .remaining-balance-amount{
-  display: flex;
+
+.dark-app-container .total-expense h1,
+.dark-app-container .total-earning p,
+.dark-app-container .remaining-balance p,
+.dark-app-container .total-earning-amount,
+.dark-app-container .ramaining-balance-amount {
+  color: #F9FAFB;
 }
-.dark-app-container .earning-input , .dark-app-container .expense-form{
+
+.dark-app-container .total-label {
+  color: #F87171;
+}
+
+.dark-app-container .total-earning-label {
+  color: #4ADE80;
+}
+
+/* ==============================
+   DARK MODE - EXPENSE CARDS
+============================== */
+
+.dark-app-container .expense-details {
+  background-color: #1F2937;
+  border: 1px solid #374151;
+}
+
+.dark-app-container .expense-info h3 {
+  color: #F9FAFB;
+}
+
+.dark-app-container .expense-meta {
+  color: #9CA3AF;
+}
+
+/* ==============================
+   DARK MODE - FORMS
+============================== */
+
+.dark-app-container .earning-input,
+.dark-app-container .expense-form {
   background-color: #374151;
   color: #F9FAFB;
-  border: 1px solid #F9FAFB;
+  border: 1px solid #4B5563;
 }
-.dark-app-container .inputs input{
-   background-color: #1F2937;
-  color: #F9FAFB;
-  border: 1px solid #F9FAFB;
-}
-.dark-app-container .expense-details{
+
+.dark-app-container .inputs input {
   background-color: #1F2937;
-  Border: 1px solid #374151;
   color: #F9FAFB;
+  border: 1px solid #4B5563;
+}
+
+.dark-app-container .expense-form h2,
+.dark-app-container .expense-list h2 {
+  color: #60A5FA;
+}
+
+.dark-app-container .earning-input::placeholder,
+.dark-app-container .inputs input::placeholder {
+  color: #9CA3AF;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 900px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .expenses-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .total-expense,
+  .total-earning,
+  .remaining-balance,
+  .add-earning {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container,
+  .dark-app-container {
+    padding: 15px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .expenses-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .total-expense,
+  .total-earning,
+  .remaining-balance,
+  .add-earning {
+    margin-bottom: 15px;
+    padding: 20px;
+  }
+
+  .expense-details {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .expense-info h3 {
+    font-size: 16px;
+  }
+
+  .expense-meta {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+  }
+
+  .expense-amount {
+    font-size: 16px;
+  }
+
+  .delete-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .inputs input {
+    width: 100%;
+  }
+
+  .add-expenses-btn {
+    margin-right: 0;
+  }
+
+  .total-earning-amount,
+  .ramaining-balance-amount {
+    margin-right: 0;
+    padding-right: 0;
+  }
 }

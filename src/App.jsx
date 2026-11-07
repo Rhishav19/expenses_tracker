@@ -69,15 +69,32 @@ function App(){
   let totalExpenses=expense.reduce((accumulator,currentItem)=>{
     return accumulator+currentItem.amount},0);
 
-  const addExpense = () => {
+ 
+const addExpense = () => {
   if (!newExpense.title || !newExpense.amount) return;
 
-  setExpense([...expense, {
-    ...newExpense,
-    id: Date.now(),
-    amount: Number(newExpense.amount)
-  }]);
+  if (newExpense.id) {
+    // Update existing expense
+    setExpense(prevExpense =>
+      prevExpense.map(item =>
+        item.id === newExpense.id
+          ? { ...newExpense, amount: Number(newExpense.amount) }
+          : item
+      )
+    );
+  } else {
+    // Add new expense
+    setExpense(prevExpense => [
+      ...prevExpense,
+      {
+        ...newExpense,
+        id: Date.now(),
+        amount: Number(newExpense.amount)
+      }
+    ]);
+  }
 
+  // Reset form
   setNewExpense({
     id: "",
     title: "",
@@ -87,21 +104,34 @@ function App(){
   });
 };
 
+
   const deleteExpense = (id) => {
     setExpense(expense.filter((item) => item.id !== id));
   }
 
-  let expenses = expense.map((item)=>(
-    <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} />
-  ));
+ 
   let remainingBalance = earning-totalExpenses;
 
   const toggleDarkMode = ()=> {
     setDarkMode(prevDarkMode=>!prevDarkMode);
   }
 
+  // edit expense 
+
+  const editExpense=(item)=>{
+    setNewExpense({
+      id:item.id,
+      title:item.title,
+      ammont:item.amount,
+      category:item.category,
+      date:item.date
+    });
+  };
+
   
-  
+   let expenses = expense.map((item)=>(
+    <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
+  ));
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -144,10 +174,10 @@ return (
         <h2>Add New Expense</h2>
 
         <div className="inputs">
-          <input type="text" placeholder="Title" onChange={updateSetNewTitle} />
-          <input type="number" placeholder="Amount" onChange={updateSetNewAmount} />
-          <input type="text" placeholder="Category" onChange={updateSetNewCategory} />
-          <input type="date" onChange={updateSetNewDate} />
+          <input type="text" placeholder="Title" onChange={updateSetNewTitle} value={newExpense.title} />
+          <input type="number" placeholder="Amount" onChange={updateSetNewAmount}  value={newExpense.amount}/>
+          <input type="text" placeholder="Category" onChange={updateSetNewCategory} value={newExpense.category}/>
+          <input type="date" onChange={updateSetNewDate} value={newExpense.date}/>
 
           <button onClick={addExpense} className="add-expenses-btn">
             Add Expense
