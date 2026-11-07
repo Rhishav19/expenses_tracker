@@ -23,15 +23,19 @@ button {
    MAIN CONTAINERS
 ============================== */
 
-.app-container {
+.app-container,
+.dark-app-container {
   min-height: 100vh;
+  width: 100%;
   padding: 30px;
+}
+
+.app-container {
   background-color: #F5F7FA;
+  color: #172B4D;
 }
 
 .dark-app-container {
-  min-height: 100vh;
-  padding: 30px;
   background-color: #111827;
   color: #F9FAFB;
 }
@@ -41,9 +45,9 @@ button {
 ============================== */
 
 .app-header {
-  margin-bottom: 30px;
-  font-size: 28px;
-  color: #172B4D;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 35px;
 }
 
 .app-header h1 {
@@ -56,7 +60,6 @@ button {
   color: #647488;
 }
 
-.dark-app-container .app-header,
 .dark-app-container .app-header h1 {
   color: #F9FAFB;
 }
@@ -66,160 +69,17 @@ button {
 }
 
 /* ==============================
-   MAIN CONTENT
+   SUMMARY GRID
 ============================== */
 
-.main-content {
+.expenses-cards {
+  width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
+
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 30px;
-}
-
-/* ==============================
-   EXPENSE CARDS
-============================== */
-
-.expense-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  padding: 20px;
-  margin-bottom: 15px;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  background-color: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.expense-details:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.expense-info {
-  min-width: 0;
-}
-
-.expense-info h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  color: #172B4D;
-  text-transform: capitalize;
-}
-
-.expense-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  color: #647488;
-  font-size: 14px;
-}
-
-.expense-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.expense-amount {
-  margin: 0;
-  color: #DC2626;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* ==============================
-   DELETE BUTTON
-============================== */
-
-.delete-btn {
-  width: auto;
-  height: auto;
-  padding: 8px 14px;
-  border: 1px solid #DC2626;
-  border-radius: 7px;
-  background-color: #DC2626;
-  color: white;
-  font-size: 13px;
-  transition: background-color 0.2s ease;
-}
-
-.delete-btn:hover {
-  background-color: #B91C1C;
-}
-.edit-btn{
-  width: auto;
-  height: auto;
-  padding: 8px 14px;
-  border-radius: 7px;
-  background-color: #9CA3AF;
-  color: white;
-  font-size: 13px;
-  transition: background-color 0.2s ease;
-  outline: none;
-  border: 1px solid #9CA3AF;
-}
-
-
-/* ==============================
-   EXPENSE FORM
-============================== */
-
-.expense-form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #E2E8F0;
-}
-
-.expense-list h2,
-.expense-form h2 {
-  color: #16479B;
-  font-size: 20px;
-  text-align: start;
-}
-
-.inputs input {
-  width: 200px;
-  height: 40px;
-  border-radius: 7px;
-  background-color: white;
-  font-size: 16px;
-  color: black;
-  margin-top: 10px;
-  padding: 10px;
-  outline: none;
-  border: 1px solid #E2E8F0;
-}
-
-.inputs input:focus {
-  border-color: #2563EB;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.add-expenses-btn {
-  width: 120px;
-  height: 35px;
-  border-radius: 7px;
-  margin-top: 20px;
-  margin-right: 80px;
-  background-color: green;
-  border: 1px solid green;
-  color: white;
-}
-
-.add-expenses-btn:hover {
-  background-color: #15803D;
 }
 
 /* ==============================
@@ -231,20 +91,25 @@ button {
 .remaining-balance,
 .add-earning {
   width: 100%;
-  max-width: 350px;
-  min-height: 120px;
-  padding: 1.5rem;
-  height: fit-content;
+  max-width: none;
+  min-width: 0;
+  min-height: 180px;
+  padding: 25px;
+  margin: 0;
+
   border-radius: 12px;
   background-color: white;
-  margin-bottom: 50px;
 }
 
-.total-expense p {
+.total-expense p,
+.total-earning p,
+.remaining-balance p {
   text-align: start;
 }
 
-.total-expense h1 {
+.total-expense h1,
+.total-earning h1,
+.remaining-balance h1 {
   color: black;
   text-align: start;
 }
@@ -264,12 +129,6 @@ button {
   text-align: start;
 }
 
-.total-earning p,
-.remaining-balance p {
-  color: black;
-  text-align: start;
-}
-
 .remaining-balance-label {
   color: #16479B;
   font-size: 25px;
@@ -277,24 +136,12 @@ button {
   margin: 0;
 }
 
-.total-earning-amount {
+.total-earning-amount,
+.remaining-balance-amount {
   color: black;
-  margin-right: 200px;
-}
-
-.ramaining-balance-amount {
-  color: black;
-  padding-right: 200px;
-}
-
-/* ==============================
-   SUMMARY GRID
-============================== */
-
-.expenses-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  margin: 15px 0;
+  padding: 0;
+  overflow-wrap: anywhere;
 }
 
 /* ==============================
@@ -304,55 +151,257 @@ button {
 .earning-input {
   width: 100%;
   max-width: 250px;
-  height: 60px;
+  height: 50px;
+  padding: 10px;
+
   border-radius: 7px;
   background-color: white;
-  font-size: 18px;
+  font-size: 16px;
   color: black;
-  padding: 10px;
+
   outline: none;
   border: 1px solid #E2E8F0;
 }
 
+.earning-input:focus {
+  border-color: #2563EB;
+}
+
 .add-earning-btn {
   width: 80px;
-  height: 30px;
+  height: 35px;
   border: 1px solid #E2E8F0;
   border-radius: 7px;
-  margin-top: 15px;
-}
-
-.add-earning-btn:hover {
-  background-color: #E2E8F0;
-}
-
-/* ==============================
-   DARK MODE BUTTONS
-============================== */
-
-.mode-btn-container {
-  display: flex;
-  gap: 10px;
-}
-
-.dark-mode-btn,
-.light-mode-btn {
-  width: 80px;
-  height: 30px;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-.dark-mode-btn {
-  background-color: black;
-  border: 1px solid black;
+  margin-top: 12px;
+  background-color: #6B7280;
   color: white;
 }
 
-.light-mode-btn {
+.add-earning-btn:hover {
+  background-color: #4B5563;
+}
+
+/* ==============================
+   MAIN CONTENT
+============================== */
+
+.main-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 25px;
+  align-items: start;
+}
+
+.expense-list,
+.expense-form {
+  min-width: 0;
+}
+
+.expense-list h2,
+.expense-form h2 {
+  color: #16479B;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.dark-app-container .expense-list h2,
+.dark-app-container .expense-form h2 {
+  color: #60A5FA;
+}
+
+/* ==============================
+   SEARCH BAR
+============================== */
+
+.search-input {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  height: 48px;
+  padding: 12px 16px;
+  margin: 15px 0 25px;
+
+  font-size: 16px;
+  font-family: inherit;
+
+  color: #172B4D;
   background-color: white;
-  border: 1px solid black;
+
+  border: 1px solid #DCE3ED;
+  border-radius: 10px;
+  outline: none;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #9AA5B5;
+}
+
+.search-input:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ==============================
+   EXPENSE CARDS
+============================== */
+
+.expense-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  margin-bottom: 15px;
+
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  background-color: white;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expense-details:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.expense-info {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.expense-info h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #172B4D;
+  text-transform: capitalize;
+}
+
+.expense-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  color: #647488;
+  font-size: 14px;
+}
+
+.expense-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.expense-amount {
+  margin: 0;
+  color: #DC2626;
+  font-size: 20px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* ==============================
+   EDIT AND DELETE BUTTONS
+============================== */
+
+.delete-btn,
+.edit-btn {
+  width: auto;
+  height: auto;
+  padding: 8px 14px;
+  border-radius: 7px;
+  color: white;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn {
+  border: 1px solid #DC2626;
+  background-color: #DC2626;
+}
+
+.delete-btn:hover {
+  background-color: #B91C1C;
+}
+
+.edit-btn {
+  border: 1px solid #9CA3AF;
+  background-color: #9CA3AF;
+}
+
+.edit-btn:hover {
+  background-color: #6B7280;
+}
+
+/* ==============================
+   EXPENSE FORM
+============================== */
+
+.expense-form {
+  width: 100%;
+  padding: 20px;
+
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  background-color: white;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.inputs input {
+  width: 100%;
+  min-width: 0;
+  height: 45px;
+  margin: 0;
+  padding: 10px;
+
+  border-radius: 7px;
+  background-color: white;
+  font-size: 16px;
   color: black;
+
+  outline: none;
+  border: 1px solid #E2E8F0;
+}
+
+.inputs input:focus {
+  border-color: #2563EB;
+}
+
+.inputs input::placeholder {
+  color: #647488;
+}
+
+.add-expenses-btn {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 7px;
+  margin-top: 5px;
+
+  background-color: green;
+  border: 1px solid green;
+  color: white;
+  font-size: 15px;
+}
+
+.add-expenses-btn:hover {
+  background-color: #15803D;
 }
 
 /* ==============================
@@ -368,10 +417,10 @@ button {
 }
 
 .dark-app-container .total-expense h1,
-.dark-app-container .total-earning p,
-.dark-app-container .remaining-balance p,
+.dark-app-container .total-earning h1,
+.dark-app-container .remaining-balance h1,
 .dark-app-container .total-earning-amount,
-.dark-app-container .ramaining-balance-amount {
+.dark-app-container .remaining-balance-amount {
   color: #F9FAFB;
 }
 
@@ -404,31 +453,79 @@ button {
    DARK MODE - FORMS
 ============================== */
 
-.dark-app-container .earning-input,
 .dark-app-container .expense-form {
-  background-color: #374151;
-  color: #F9FAFB;
-  border: 1px solid #4B5563;
-}
-
-.dark-app-container .inputs input {
   background-color: #1F2937;
-  color: #F9FAFB;
-  border: 1px solid #4B5563;
+  border: 1px solid #374151;
 }
 
-.dark-app-container .expense-form h2,
-.dark-app-container .expense-list h2 {
-  color: #60A5FA;
+.dark-app-container .earning-input,
+.dark-app-container .inputs input,
+.dark-app-container .search-input {
+  background-color: #263449;
+  color: #F9FAFB;
+  border: 1px solid #475569;
 }
 
 .dark-app-container .earning-input::placeholder,
-.dark-app-container .inputs input::placeholder {
+.dark-app-container .inputs input::placeholder,
+.dark-app-container .search-input::placeholder {
   color: #9CA3AF;
 }
 
+.dark-app-container .earning-input:focus,
+.dark-app-container .inputs input:focus,
+.dark-app-container .search-input:focus {
+  border-color: #60A5FA;
+}
+
 /* ==============================
-   RESPONSIVE DESIGN
+   DARK MODE - BUTTONS
+============================== */
+
+.dark-app-container .add-earning-btn {
+  background-color: #374151;
+  color: white;
+  border-color: #4B5563;
+}
+
+.dark-app-container .add-earning-btn:hover {
+  background-color: #4B5563;
+}
+
+/* ==============================
+   DARK MODE BUTTON CONTAINER
+============================== */
+
+.mode-btn-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 15px auto 0;
+}
+
+.dark-mode-btn,
+.light-mode-btn {
+  width: 80px;
+  height: 35px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.dark-mode-btn {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.light-mode-btn {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+/* ==============================
+   RESPONSIVE - TABLETS
 ============================== */
 
 @media (max-width: 900px) {
@@ -440,18 +537,23 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .total-expense,
-  .total-earning,
-  .remaining-balance,
-  .add-earning {
+  .expense-form {
     max-width: 100%;
   }
 }
+
+/* ==============================
+   RESPONSIVE - MOBILE
+============================== */
 
 @media (max-width: 600px) {
   .app-container,
   .dark-app-container {
     padding: 15px;
+  }
+
+  .app-header {
+    margin-bottom: 25px;
   }
 
   .app-header h1 {
@@ -460,20 +562,42 @@ button {
 
   .expenses-cards {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 15px;
+    margin-bottom: 30px;
   }
 
   .total-expense,
   .total-earning,
   .remaining-balance,
   .add-earning {
-    margin-bottom: 15px;
+    min-height: auto;
     padding: 20px;
   }
 
+  .total-label,
+  .total-earning-label,
+  .remaining-balance-label {
+    font-size: 21px;
+  }
+
+  .total-earning-amount,
+  .remaining-balance-amount {
+    font-size: 28px;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .expense-details {
+    flex-wrap: wrap;
     padding: 15px;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .expense-info {
+    flex: 1;
   }
 
   .expense-info h3 {
@@ -481,31 +605,41 @@ button {
   }
 
   .expense-meta {
-    flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     font-size: 12px;
+  }
+
+  .expense-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
   }
 
   .expense-amount {
     font-size: 16px;
   }
 
-  .delete-btn {
+  .delete-btn,
+  .edit-btn {
     padding: 7px 10px;
     font-size: 12px;
+  }
+
+  .expense-form {
+    padding: 15px;
   }
 
   .inputs input {
     width: 100%;
   }
 
-  .add-expenses-btn {
-    margin-right: 0;
+  .search-input {
+    width: 100%;
+    max-width: 100%;
   }
 
-  .total-earning-amount,
-  .ramaining-balance-amount {
-    margin-right: 0;
-    padding-right: 0;
+  .earning-input {
+    max-width: 100%;
   }
 }

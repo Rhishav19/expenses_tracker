@@ -35,7 +35,7 @@ function App(){
     localStorage.setItem(("myearning"),earning)});
   let [newEarning, setNewEarning] = useState("");
   let [darkMode,setDarkMode] = useState(false);
-  
+  let [searchTerm, setSearchTerm] = useState("");
 
   const updateEarning=(event)=>{
     setNewEarning(event.target.value);
@@ -122,14 +122,15 @@ const addExpense = () => {
     setNewExpense({
       id:item.id,
       title:item.title,
-      ammont:item.amount,
+      amount:item.amount,
       category:item.category,
       date:item.date
     });
   };
 
-  
-   let expenses = expense.map((item)=>(
+   let filteredExpenses = expense.filter((item)=>
+  item.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+   let expenses = filteredExpenses.map((item)=>(
     <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
   ));
   
@@ -192,6 +193,8 @@ return (
     <button className="dark-mode-btn" onClick={toggleDarkMode}>{darkMode?"Light":"Dark"}</button>
    
 </div>
+<input type="text" className="search-input" placeholder="Search expenses..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}
+/>
 </div>
 );
 }
