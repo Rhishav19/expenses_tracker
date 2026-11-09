@@ -36,6 +36,8 @@ function App(){
   let [newEarning, setNewEarning] = useState("");
   let [darkMode,setDarkMode] = useState(false);
   let [searchTerm, setSearchTerm] = useState("");
+  let [selectedCategory, setSelectedCategory] = useState("All");
+
 
   const updateEarning=(event)=>{
     setNewEarning(event.target.value);
@@ -179,6 +181,19 @@ return (
           <input type="number" placeholder="Amount" onChange={updateSetNewAmount}  value={newExpense.amount}/>
           <input type="text" placeholder="Category" onChange={updateSetNewCategory} value={newExpense.category}/>
           <input type="date" onChange={updateSetNewDate} value={newExpense.date}/>
+
+          <select name="" className="category-filter" value={selectedCategory} onChange={(event)=>{
+            event.target.value
+          }}>
+
+          <option value="all">All Categories</option>
+          <option value="food">Food</option>
+          <option value="transportation">Transportation</option>
+          <option value="shopping">Shopping</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="other">Other</option>
+
+          </select>
 
           <button onClick={addExpense} className="add-expenses-btn">
             Add Expense
