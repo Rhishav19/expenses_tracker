@@ -36,7 +36,7 @@ function App(){
   let [newEarning, setNewEarning] = useState("");
   let [darkMode,setDarkMode] = useState(false);
   let [searchTerm, setSearchTerm] = useState("");
-  let [selectedCategory, setSelectedCategory] = useState("All");
+  let [selectedCategory, setSelectedCategory] = useState("all");
 
 
   const updateEarning=(event)=>{
@@ -131,7 +131,17 @@ const addExpense = () => {
   };
 
    let filteredExpenses = expense.filter((item)=>
-  item.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+  {
+    let matchesSearch = item.title
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase());
+
+    let matchesCategory = 
+    selectedCategory === "all" || 
+    item.category.toLowerCase()===selectedCategory.toLowerCase();
+
+    return matchesCategory&&matchesSearch;
+  });
    let expenses = filteredExpenses.map((item)=>(
     <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
   ));
@@ -170,7 +180,23 @@ return (
 
       <section className="expense-list">
         <h2>Recent Expenses</h2>
-        {expenses}
+        
+        <input type="text" className="search-input" placeholder="Search expenses..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}></input>
+          <select name="" className="category-filter" value={selectedCategory} onChange={(event)=>
+            setSelectedCategory(event.target.value)}>
+
+          <option value="all">All Categories</option>
+          <option value="food">Food</option>
+          <option value="transportation">Transportation</option>
+          <option value="shopping">Shopping</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="other">Other</option>
+
+          </select>
+
+           {filteredExpenses.length === 0?(
+           <p className="no-expenses">no expenses found ..</p>
+           ): expenses}
       </section>
 
       <section className="expense-form">
@@ -182,18 +208,7 @@ return (
           <input type="text" placeholder="Category" onChange={updateSetNewCategory} value={newExpense.category}/>
           <input type="date" onChange={updateSetNewDate} value={newExpense.date}/>
 
-          <select name="" className="category-filter" value={selectedCategory} onChange={(event)=>{
-            event.target.value
-          }}>
-
-          <option value="all">All Categories</option>
-          <option value="food">Food</option>
-          <option value="transportation">Transportation</option>
-          <option value="shopping">Shopping</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="other">Other</option>
-
-          </select>
+          
 
           <button onClick={addExpense} className="add-expenses-btn">
             Add Expense
@@ -204,13 +219,10 @@ return (
       </section>
 
     </main>
-<div className="mode-btn-container">
+  <div className="mode-btn-container">
     <button className="dark-mode-btn" onClick={toggleDarkMode}>{darkMode?"Light":"Dark"}</button>
-   
-</div>
-<input type="text" className="search-input" placeholder="Search expenses..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}
-/>
-</div>
+  </div> 
+  </div>
 );
 }
 
