@@ -1,6 +1,14 @@
 import ExpensesItem from "./ExpensesItem";
 import { useState,useEffect } from "react";
 import "./App.css"
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend
+} from "recharts";
 
 function App(){
   let [expense,setExpense]=useState(()=>{
@@ -70,6 +78,32 @@ function App(){
 
   let totalExpenses=expense.reduce((accumulator,currentItem)=>{
     return accumulator+currentItem.amount},0);
+
+  let categoryTotals = expense.reduce((totals, item) => {
+  let category = item.category || "Uncategorized";
+
+  totals[category] = (totals[category] || 0) + Number(item.amount);
+
+  return totals;
+  }, {});
+
+  let chartData = Object.entries(categoryTotals).map(
+  ([category, amount]) => ({
+    name: category,
+    value: amount
+  })
+);
+
+  
+
+  let categoryAnalytics = Object.entries(categoryTotals).map(
+  ([category, amount]) => (
+    <div className="analytics-item" key={category}>
+      <h3>{category}</h3>
+      <p>Rs. {amount}</p>
+    </div>
+  )
+);
 
  
 const addExpense = () => {
@@ -175,6 +209,13 @@ return (
       </div>
      
     </div>
+    <section className="expense-analytics">
+  <h2>Expense Analytics</h2>
+  <div className="analytics-container">
+    {categoryAnalytics}
+  </div>
+  </section>
+
 
     <main className="main-content">
 
@@ -222,6 +263,36 @@ return (
   <div className="mode-btn-container">
     <button className="dark-mode-btn" onClick={toggleDarkMode}>{darkMode?"Light":"Dark"}</button>
   </div> 
+  <section className="expense-analytics">
+  <h2>Expense Analytics</h2>
+
+  <div className="analytics-container">
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
+        <Pie
+          data={chartData}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          innerRadius={65}
+          outerRadius={100}
+          paddingAngle={4}
+        >
+          {chartData.map((entry, index) => (
+            <Cell
+              key={entry.name}
+              fill={["#2563EB", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"][index % 5]}
+            />
+          ))}
+        </Pie>
+
+        <Tooltip />
+        <Legend />
+      </PieChart>
+    </ResponsiveContainer>
+  </div>
+</section>
   </div>
 );
 }
