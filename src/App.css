@@ -695,3 +695,30 @@ button {
   background: #1F2937;
   color: white;
 }
+.sort-filter{
+  width: 100%;
+  max-width: 250px;
+  height: 45px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #DCE3ED;
+  border-radius: 10px;
+  background: white;
+  color: #172B4D;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.sort-filter:focus {
+  border-color: #2563EB;
+}
+
+.dark-app-container .sort-filter {
+  background: #263449;
+  color: white;
+  border-color: #475569;
+}
+
+}

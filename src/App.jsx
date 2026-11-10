@@ -45,6 +45,7 @@ function App(){
   let [darkMode,setDarkMode] = useState(false);
   let [searchTerm, setSearchTerm] = useState("");
   let [selectedCategory, setSelectedCategory] = useState("all");
+  let [sortOrder,setSortOrder] = useState("newest");
 
 
   const updateEarning=(event)=>{
@@ -176,7 +177,25 @@ const addExpense = () => {
 
     return matchesCategory&&matchesSearch;
   });
-   let expenses = filteredExpenses.map((item)=>(
+   
+
+  let sortedExpenses = [...filteredExpenses].sort((a,b)=>{
+    if(sortOrder==="oldest"){
+      return new Date(b.date)-new Date(a.date);
+    }
+    if(sortOrder==="newest"){
+      return new Date(a.date)-new Date(b.date);
+    }
+    if(sortOrder==="highest"){
+      return Number(b.amount)-Number(a.amount);
+    }
+    if(sortOrder==="lowest"){
+      return Number(a.amount)-Number(b.amount);
+    }
+    return 0;
+  });
+
+  let expenses = sortedExpenses.map((item)=>(
     <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
   ));
   
@@ -221,6 +240,15 @@ return (
 
       <section className="expense-list">
         <h2>Recent Expenses</h2>
+
+        <select className="sort-filter" value={sortOrder} onChange={(event)=>
+          setSortOrder(event.target.value)
+        }>
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="highest">Highest</option>
+          <option value="lowest">Lowest</option>
+        </select>
         
         <input type="text" className="search-input" placeholder="Search expenses..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}></input>
           <select name="" className="category-filter" value={selectedCategory} onChange={(event)=>
