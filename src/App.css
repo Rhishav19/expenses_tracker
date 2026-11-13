@@ -721,4 +721,31 @@ button {
   border-color: #475569;
 }
 
+.clear-expenses-btn {
+  background-color: #EF4444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px 0 15px;
+}
+
+.clear-expenses-btn:hover {
+  background-color: #DC2626;
+  transform: translateY(-2px);
+}
+
+.clear-expenses-btn:active {
+  transform: translateY(0);
+}
+
+.clear-expenses-btn:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
 }

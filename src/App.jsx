@@ -198,6 +198,16 @@ const addExpense = () => {
   let expenses = sortedExpenses.map((item)=>(
     <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
   ));
+
+  const clearAllExpenses = () => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete all expenses?"
+  );
+
+  if (confirmDelete) {
+    setExpense([]);
+  }
+};
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -240,6 +250,14 @@ return (
 
       <section className="expense-list">
         <h2>Recent Expenses</h2>
+
+        <button
+          className="clear-expenses-btn"
+          onClick={clearAllExpenses}
+          disabled={expense.length === 0}
+        >
+  Clear All Expenses
+</button>
 
         <select className="sort-filter" value={sortOrder} onChange={(event)=>
           setSortOrder(event.target.value)
