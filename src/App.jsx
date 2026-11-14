@@ -208,6 +208,8 @@ const addExpense = () => {
     setExpense([]);
   }
 };
+
+let expenseCount=expense.length;
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -250,6 +252,8 @@ return (
 
       <section className="expense-list">
         <h2>Recent Expenses</h2>
+
+        <p className="expense-count">{expenseCount===1? expenseCount + " Expense" :expenseCount + " Expenses"}</p>
 
         <button
           className="clear-expenses-btn"

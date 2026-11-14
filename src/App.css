@@ -749,3 +749,19 @@ button {
   opacity: 0.6;
   transform: none;
 }
+.expense-count{
+  display: inline-block;
+  background-color: #EFF6FF;
+  color: #2563EB;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px 0 15px;
+}
+
+.dark-app-container .expense-count {
+  background-color: #1E3A5F;
+  color: #93C5FD;
+}
+}
