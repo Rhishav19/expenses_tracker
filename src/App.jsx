@@ -142,9 +142,7 @@ const addExpense = () => {
 };
 
 
-  const deleteExpense = (id) => {
-    setExpense(expense.filter((item) => item.id !== id));
-  }
+  
 
  
   let remainingBalance = earning-totalExpenses;
@@ -194,9 +192,17 @@ const addExpense = () => {
     }
     return 0;
   });
+  const confirmDelete = (id) =>{
+  const deleteExpense=window.confirm(
+    "Are you sure you want to delete?"
+  );
+  if(deleteExpense){
+    setExpense(expense.filter((item) => item.id !== id));
+  }
+  }
 
   let expenses = sortedExpenses.map((item)=>(
-    <ExpensesItem key={item.id} expense={item} deleteExpense={deleteExpense} editExpense={editExpense}/>
+    <ExpensesItem key={item.id} expense={item} deleteExpense={confirmDelete} editExpense={editExpense}/>
   ));
 
   const clearAllExpenses = () => {
@@ -208,6 +214,8 @@ const addExpense = () => {
     setExpense([]);
   }
 };
+
+
 
 let expenseCount=expense.length;
   
