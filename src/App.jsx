@@ -215,6 +215,10 @@ const addExpense = () => {
   }
 };
 
+const resetForm = () =>{
+  setNewExpense({title:"",amount:"",category:"",date:""});
+}
+
 
 
 let expenseCount=expense.length;
@@ -311,6 +315,9 @@ return (
 
           <button onClick={addExpense} className="add-expenses-btn">
             Add Expense
+          </button>
+          <button onClick={resetForm} className="reset-btn">
+            Reset Form
           </button>
 
         </div>

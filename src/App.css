@@ -764,3 +764,29 @@ button {
   background-color: #1E3A5F;
   color: #93C5FD;
 }
+.reset-btn {
+  background-color: #64748B;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.reset-btn:hover {
+  background-color: #475569;
+  transform: translateY(-2px);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+.reset-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
