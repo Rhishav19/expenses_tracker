@@ -842,3 +842,56 @@ button {
 .dark-app-container .highest-expense-desc {
   color: #9CA3AF;
 }
+
+/* Today Highest Expense Card */
+.today-highest-expense {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.today-highest-expense:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.today-highest-expense-label {
+  color: #64748B;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.today-highest-expense-amount {
+  color: #EF4444;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.today-highest-expense-desc {
+  color: #94A3B8;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Dark Mode */
+.dark-app-container .today-highest-expense {
+  background-color: #1F2937;
+  border-color: #374151;
+}
+
+.dark-app-container .today-highest-expense-label {
+  color: #9CA3AF;
+}
+
+.dark-app-container .today-highest-expense-amount {
+  color: #F87171;
+}
+
+.dark-app-container .today-highest-expense-desc {
+  color: #9CA3AF;
+}

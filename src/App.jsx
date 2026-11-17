@@ -231,6 +231,13 @@ let highestExpense =  expense.length === 0? 0: expense.reduce((accumulator,curre
     return currentItem
   }
 },expense[0]);
+
+let today = new Date().toISOString().split("T")[0];
+let filteredToday= expense.filter((item)=>item.date===today)
+let filteredTodayExpenses = filteredToday.reduce((accumulator,currentItem)=>{
+  return accumulator+currentItem.amount;
+},0);
+
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -256,9 +263,14 @@ return (
         <p className="total-earning-desc">Your total earning</p>
       </div>
       <div className="highest-expense">
-        <h3 className="highest-expense-label">highest Expense</h3>
+        <h3 className="highest-expense-label">Highest Expense</h3>
         <h1 className="highest-expense-amount">Rs.{highestExpense.amount}</h1>
         <p className="highest-expense-desc">Your highest expense</p>
+      </div>
+      <div className="today-highest-expense">
+        <h3 className="today-highest-expense-label">Today's Highest Expense</h3>
+        <h1 className="today-highest-expense-amount">Rs.{filteredTodayExpenses}</h1>
+        <p className="today-highest-expense-desc">Your highest expenses today</p>
       </div>
       <div className="add-earning">
         <input type="number" className="earning-input" placeholder="add earning" onChange={updateEarning} value={newEarning}/>
@@ -372,6 +384,7 @@ return (
     </ResponsiveContainer>
   </div>
 </section>
+
   </div>
 );
 }
