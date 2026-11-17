@@ -222,6 +222,15 @@ const resetForm = () =>{
 
 
 let expenseCount=expense.length;
+
+let highestExpense =  expense.length === 0? 0: expense.reduce((accumulator,currentItem)=>{
+  if(accumulator.amount>currentItem.amount){
+    return accumulator;
+  }
+  else{
+    return currentItem
+  }
+},expense[0]);
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -245,6 +254,11 @@ return (
         <h3 className="total-earning-label">Total Earning</h3>
         <h1 className="total-earning-amount">Rs.{[earning]}</h1>
         <p className="total-earning-desc">Your total earning</p>
+      </div>
+      <div className="highest-expense">
+        <h3 className="highest-expense-label">highest Expense</h3>
+        <h1 className="highest-expense-amount">Rs.{highestExpense.amount}</h1>
+        <p className="highest-expense-desc">Your highest expense</p>
       </div>
       <div className="add-earning">
         <input type="number" className="earning-input" placeholder="add earning" onChange={updateEarning} value={newEarning}/>
