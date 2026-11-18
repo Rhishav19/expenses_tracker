@@ -238,6 +238,10 @@ let filteredTodayExpenses = filteredToday.reduce((accumulator,currentItem)=>{
   return accumulator+currentItem.amount;
 },0);
 
+let spendingPercentage = earning>0? (totalExpenses/earning)*100 : 0;
+
+let number = spendingPercentage.toFixed(0);
+
   
 return (
   <div className={darkMode?"dark-app-container":"app-container"}>
@@ -271,6 +275,11 @@ return (
         <h3 className="today-highest-expense-label">Today's Highest Expense</h3>
         <h1 className="today-highest-expense-amount">Rs.{filteredTodayExpenses}</h1>
         <p className="today-highest-expense-desc">Your highest expenses today</p>
+      </div>
+      <div className="spending-percentage">
+        <h3 className="spending-percentage-label">Spending Percentage</h3>
+        <h1 className="spending-percentage-amount">{number} %</h1>
+        <p className="spending-percentage-desc">Your spending percentage</p>
       </div>
       <div className="add-earning">
         <input type="number" className="earning-input" placeholder="add earning" onChange={updateEarning} value={newEarning}/>

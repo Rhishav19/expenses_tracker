@@ -895,3 +895,56 @@ button {
 .dark-app-container .today-highest-expense-desc {
   color: #9CA3AF;
 }
+
+/* spending percentage*/
+.spending-percentage {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.spending-percentage:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.spending-percentage-label {
+  color: #64748B;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.spending-percentage-amount {
+  color: #EF4444;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.spending-percentage-desc {
+  color: #94A3B8;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Dark Mode */
+.dark-app-container .spending-percentage {
+  background-color: #1F2937;
+  border-color: #374151;
+}
+
+.dark-app-container .spending-percentage-label {
+  color: #9CA3AF;
+}
+
+.dark-app-container .spending-percentage-amount {
+  color: #F87171;
+}
+
+.dark-app-container .spending-percentage-desc {
+  color: #9CA3AF;
+}
