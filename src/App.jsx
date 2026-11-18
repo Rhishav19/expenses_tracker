@@ -280,6 +280,12 @@ return (
         <h3 className="spending-percentage-label">Spending Percentage</h3>
         <h1 className="spending-percentage-amount">{number} %</h1>
         <p className="spending-percentage-desc">Your spending percentage</p>
+        <div className="progress-bar">
+          <div className="progress-fill" style={{ width: `${spendingPercentage}%` }}>
+            
+          </div>
+        </div>
+        
       </div>
       <div className="add-earning">
         <input type="number" className="earning-input" placeholder="add earning" onChange={updateEarning} value={newEarning}/>
