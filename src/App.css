@@ -964,3 +964,137 @@ button {
   border-radius: 20px;
   transition: width 0.5s ease-in-out;
 }
+
+/* MONTHLY BUDGET CARD */
+
+.monthly-budget {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.monthly-budget:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.monthly-budget h3 {
+  color: #172B4D;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.monthly-budget h2 {
+  color: #172B4D;
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+/* INPUT */
+
+.budget-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.budget-input:focus {
+  border-color: #2563EB;
+}
+
+/* BUTTON */
+
+.budget-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.budget-button:hover {
+  background-color: #1D4ED8;
+}
+
+/* PROGRESS BAR */
+
+.monthly-budget .progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #E5E7EB;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.monthly-budget .progress-fill {
+  height: 100%;
+  background-color: #16A34A;
+  border-radius: 20px;
+  transition: width 0.5s ease;
+}
+
+/* REMAINING BUDGET */
+
+.monthly-budget h3:last-of-type {
+  margin-top: 18px;
+  color: #16A34A;
+}
+
+/* WARNING */
+
+.budget-warning {
+  color: #DC2626;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* DARK MODE */
+
+.dark-app-container .monthly-budget {
+  background-color: #1F2937;
+  border-color: #374151;
+}
+
+.dark-app-container .monthly-budget h2,
+.dark-app-container .monthly-budget h3 {
+  color: #F9FAFB;
+}
+
+.dark-app-container .budget-input {
+  background-color: #111827;
+  color: white;
+  border-color: #374151;
+}
+
+.dark-app-container .budget-input:focus {
+  border-color: #60A5FA;
+}
+
+.dark-app-container .monthly-budget .progress-bar {
+  background-color: #374151;
+}
+
+.dark-app-container .monthly-budget h3:last-of-type {
+  color: #4ADE80;
+}
+.budget-warning {
+  color: #DC2626;
+  font-weight: 600;
+  margin-top: 12px;
+}

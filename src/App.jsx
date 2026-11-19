@@ -46,6 +46,11 @@ function App(){
   let [searchTerm, setSearchTerm] = useState("");
   let [selectedCategory, setSelectedCategory] = useState("all");
   let [sortOrder,setSortOrder] = useState("newest");
+  let [monthlyBudget, setMonthlyBudget] = useState(() => {
+  let savedBudget = localStorage.getItem("mybudget");
+
+  return savedBudget ? Number(savedBudget) : 0;
+});
 
 
   const updateEarning=(event)=>{
@@ -57,8 +62,44 @@ function App(){
   setEarning(prevEarning=>prevEarning+Number(newEarning));
   setNewEarning("");
 };
-  
-  
+
+const updateMonthlyBudget = (event)=>{
+  setMonthlyBudget(event.target.value);
+}
+
+const addMonthlyBudget = () => {
+  const budget = Number(monthlyBudget);
+
+  if (budget <= 0) {
+    alert("Please enter a valid budget");
+    return;
+  }
+
+  localStorage.setItem("mybudget", budget);
+  alert("Monthly budget saved successfully!");
+};
+const currentMonth = new Date().getMonth();
+const currentYear = new Date().getFullYear();
+
+const monthlyExpenses = expense
+  .filter((item) => {
+    const expenseDate = new Date(item.date + "T00:00:00");
+
+    return (
+      expenseDate.getMonth() === currentMonth &&
+      expenseDate.getFullYear() === currentYear
+    );
+  })
+  .reduce((total, item) => total + Number(item.amount), 0);
+
+  let remainingBudget = monthlyBudget - monthlyExpenses;
+
+let budgetPercentage =
+  monthlyBudget > 0
+    ? (monthlyExpenses / monthlyBudget) * 100
+    : 0;
+
+let budgetProgress = Math.min(budgetPercentage, 100);
 
   const updateSetNewId=(event)=>{
     setNewExpense({...newExpense,id:event.target.value});
@@ -291,6 +332,47 @@ return (
         <input type="number" className="earning-input" placeholder="add earning" onChange={updateEarning} value={newEarning}/>
         <button className="add-earning-btn" onClick={addEarning}>Add</button>
       </div>
+      <div className="monthly-budget">
+  <h3>Monthly Budget</h3>
+
+  <input
+    type="number"
+    className="budget-input"
+    placeholder="Enter monthly budget"
+    value={monthlyBudget}
+    onChange={updateMonthlyBudget}
+  />
+
+  <button
+    className="budget-button"
+    onClick={addMonthlyBudget}
+  >
+    Save Budget
+  </button>
+
+  <h2>Rs. {monthlyExpenses} / Rs. {monthlyBudget}</h2>
+
+  <div className="progress-bar">
+    <div
+      className="progress-fill"
+      style={{ width: `${budgetProgress}%` }}
+    />
+  </div>
+
+  <p>
+    {budgetPercentage.toFixed(2)}% of budget used
+  </p>
+
+  <h3>
+    Remaining: Rs. {remainingBudget}
+  </h3>
+
+  {remainingBudget < 0 && (
+    <p className="budget-warning">
+      Warning! You have exceeded your monthly budget.
+    </p>
+  )}
+</div>
      
     </div>
     <section className="expense-analytics">
